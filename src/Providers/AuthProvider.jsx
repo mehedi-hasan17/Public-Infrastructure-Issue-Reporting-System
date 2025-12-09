@@ -7,9 +7,11 @@ import {
   signInWithPopup,
   signOut,
   updateProfile,
-} from 'firebase/auth'
+  
+} 
+from 'firebase/auth'
 import { AuthContext } from './AuthContext'
-import { auth } from '../firebase/firebase.int'
+import {auth} from '../firebase/firebase.int'
 
 
 const googleProvider = new GoogleAuthProvider()

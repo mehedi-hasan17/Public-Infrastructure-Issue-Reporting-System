@@ -6,8 +6,12 @@ import Features from "../Features/Features.jsx";
 import HowItWorks from "../HowItWorks/HowItWorks.jsx";
 import ExtraSection1 from "../ExtraSection1/ExtraSection1.jsx";
 import ExtraSection2 from "../ExtraSection2/ExtraSection2.jsx";
+import { useLoaderData } from "react-router";
 
 const Home = () => {
+  const data = useLoaderData()
+  
+  
   return (
     <div className="pt-20"> 
       {/* Adding padding-top so Navbar doesn’t overlap on small devices */}
@@ -17,7 +21,7 @@ const Home = () => {
 
       {/* Latest Resolved Issues */}
       <section className="container mx-auto px-4 my-16">
-        <LatestResolvedIssues />
+        <LatestResolvedIssues data={data} />
       </section>
 
       {/* Features Section */}

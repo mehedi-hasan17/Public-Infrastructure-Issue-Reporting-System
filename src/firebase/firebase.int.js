@@ -3,15 +3,14 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBCa8rkeDVUrBlc-JGFespZy32BfqHtYLc",
-  authDomain: "public-infrastructure-issue.firebaseapp.com",
-  projectId: "public-infrastructure-issue",
-  storageBucket: "public-infrastructure-issue.firebasestorage.app",
-  messagingSenderId: "383742012214",
-  appId: "1:383742012214:web:c161fc7433297d2140e197"
+  apiKey: "AIzaSyC2srqi-zwlrNldvf84d8BIe7PJzgdcADs",
+  authDomain: "toy-toipa.firebaseapp.com",
+  projectId: "toy-toipa",
+  storageBucket: "toy-toipa.firebasestorage.app",
+  messagingSenderId: "952754300017",
+  appId: "1:952754300017:web:78737e5a8f86a68a7927d0"
 };
 
 // Initialize Firebase
