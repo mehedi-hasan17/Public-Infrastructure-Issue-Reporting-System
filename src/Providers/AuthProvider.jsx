@@ -1,79 +1,78 @@
-import { useEffect, useState } from 'react'
 import {
-  GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
-  
-} 
-from 'firebase/auth'
-import { AuthContext } from './AuthContext'
-import {auth} from '../firebase/firebase.int'
+} from "firebase/auth";
+import { AuthContext } from "./AuthContext";
+import { useEffect, useState } from "react";
+import { auth } from "../firebase/firebase.int";
 
-
-const googleProvider = new GoogleAuthProvider()
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const provider = new GoogleAuthProvider();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const createUser = (email, password) => {
-    setLoading(true)
-    return createUserWithEmailAndPassword(auth, email, password)
-  }
+  // Google Login
+  const signInWithGoogleProvider = () => {
+    setLoading(true);
+    return signInWithPopup(auth, provider);
+  };
 
-  const signIn = (email, password) => {
-    setLoading(true)
-    return signInWithEmailAndPassword(auth, email, password)
-  }
+  // Register
+  const registerUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-  const signInWithGoogle = () => {
-    setLoading(true)
-    return signInWithPopup(auth, googleProvider)
-  }
+  // Login
+  const signInUser = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-  const logOut = async () => {
-    setLoading(true)
-    return signOut(auth)
-  }
+  // Logout
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
-  const updateUserProfile = (name, photo) => {
-    return updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: photo,
-    })
-  }
+  // Update Profile
+  const updateUserProfile = (profile) => {
+    return updateProfile(auth.currentUser, profile);
+  };
 
-  // onAuthStateChange
+  // Observe User State
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async currentUser => {
-      console.log('CurrentUser-->', currentUser?.email)
-      setUser(currentUser)
-      setLoading(false)
-    })
-    return () => {
-      return unsubscribe()
-    }
-  }, [])
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false); // ✅ এখানে রাখতে হবে
+      console.log(currentUser)
+    });
 
-  const authInfo = {
+    return () => unSubscribe();
+  }, []);
+
+  const userInfo = {
+    registerUser,
+    signInUser,
+    signInWithGoogleProvider,
     user,
     setUser,
     loading,
-    setLoading,
-    createUser,
-    signIn,
-    signInWithGoogle,
     logOut,
     updateUserProfile,
-  }
+  };
 
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
-  )
-}
+    <AuthContext.Provider value={userInfo}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
-export default AuthProvider
+export default AuthProvider;

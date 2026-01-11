@@ -4,13 +4,14 @@ import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
+// 
 const firebaseConfig = {
-  apiKey: "AIzaSyC2srqi-zwlrNldvf84d8BIe7PJzgdcADs",
-  authDomain: "toy-toipa.firebaseapp.com",
-  projectId: "toy-toipa",
-  storageBucket: "toy-toipa.firebasestorage.app",
-  messagingSenderId: "952754300017",
-  appId: "1:952754300017:web:78737e5a8f86a68a7927d0"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase

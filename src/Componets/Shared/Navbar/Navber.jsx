@@ -16,11 +16,13 @@ const Navbar = () => {
           <Link to="/">
             <div className="flex items-center">
               <div className="w-[55px] h-[55px] ml-4">
+               <Link to='/'>
                 <img
                   className="w-full h-full object-cover rounded-full"
                   src={img}
                   alt=""
                 />
+               </Link>
               </div>
                 <h1 className="text-xl text-green-400 font-bold">
                   Public Issue{" "}
@@ -128,7 +130,7 @@ const Navbar = () => {
                         Login
                       </Link>
                       <Link
-                        to="/signup"
+                        to="/register"
                         className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
                       >
                         Sign Up
