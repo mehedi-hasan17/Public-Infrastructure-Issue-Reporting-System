@@ -6,6 +6,7 @@ import img from "../../../assets/download.png";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  console.log(user);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
