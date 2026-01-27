@@ -15,6 +15,10 @@ import MyIssues from "../DashboardLayout/MyIssues";
 import ReportIssue from "../DashboardLayout/ReportIssue";
 import Profile from "../DashboardLayout/Profile";
 import UserManagement from "../DashboardLayout/UserManagement";
+import Staff from "../Componets/pages/Staff";
+import ApprovedStaff from "../DashboardLayout/ApprovedStaff";
+import Allissues from "../DashboardLayout/Allissues";
+import ManageUsers from "../DashboardLayout/ManageUsers";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +43,7 @@ export const router = createBrowserRouter([
         path: "/all-Issues",
         Component: AllIssues,
       },
+
       {
         path: "/detels-page/:id",
         element: (
@@ -56,16 +61,26 @@ export const router = createBrowserRouter([
         path: "/about-Us",
         Component: AboutUs,
       },
+      {
+        path: "/staff",
+        element: (
+          <PrivateRoute>
+            <Staff></Staff>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {
     path: "/dashboard",
     element: (
-      <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
     ),
     children: [
       {
-       path: '/dashboard',
+        path: "/dashboard",
         Component: DashboardHome, // Dashboard main page
       },
       {
@@ -73,8 +88,16 @@ export const router = createBrowserRouter([
         Component: MyIssues,
       },
       {
-        path: "user-management",
+        path: "citizen-management",
         Component: UserManagement,
+      },
+      {
+        path: "all-issues",
+        Component: Allissues,
+      },
+      {
+        path: "manage-users",
+        Component: ManageUsers,
       },
       {
         path: "report-issue",
@@ -84,6 +107,10 @@ export const router = createBrowserRouter([
         path: "profile",
         Component: Profile,
       },
+      {
+        path: "staff-management",
+        Component: ApprovedStaff
+      }
     ],
   },
 ]);

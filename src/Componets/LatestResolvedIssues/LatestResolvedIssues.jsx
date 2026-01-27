@@ -1,7 +1,7 @@
 import IssueCard from "../IssueCard/IssueCard.jsx";
 
 const LatestResolvedIssues = ({data}) => {
-  console.log(data);
+  // console.log(data);
 
   
 

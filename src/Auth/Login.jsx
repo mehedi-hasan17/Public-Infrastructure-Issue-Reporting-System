@@ -4,25 +4,25 @@ import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../Componets/Hook/useAuth";
 import SosalLink from "./SosalLink";
 
-
 const Login = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const location = useLocation();
   const from = location.state || "/";
 
-  
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { singInUser } = useAuth();
+  const { signInUser } = useAuth();
+
+
   const heandleLogin = (data) => {
     console.log(data);
-    singInUser(data.email, data.password)
-      .then((result) => {
+    signInUser(data.email, data.password)
+      .then((result) => { 
         console.log(result);
-        navigate(from, {replace: true})
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         console.log(err);
@@ -74,13 +74,14 @@ const Login = () => {
           </div>
           <button className="btn bg-primary text-white  mt-4">Login</button>
         </fieldset>
-        
+
         <p>
           Onready An account ?{" "}
-          <Link 
-          state={location?.state || '/'}
-          
-          className="text-blue-500 underline" to="/register">
+          <Link
+            state={location?.state || "/"}
+            className="text-blue-500 underline"
+            to="/register"
+          >
             {" "}
             Register
           </Link>

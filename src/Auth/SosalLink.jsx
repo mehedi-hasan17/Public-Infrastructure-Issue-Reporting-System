@@ -21,7 +21,7 @@ const SosalLink = () => {
           displayName: result.user.displayName,
           photoURL: result.user.photoURL,
         };
-        axiosSecure.post("/users", userInfo).then((res) => {
+        axiosSecure.post("/citizen", userInfo).then((res) => {
           console.log("user info stored", res.data);
         });
       })

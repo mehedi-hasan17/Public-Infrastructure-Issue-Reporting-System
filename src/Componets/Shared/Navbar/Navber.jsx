@@ -6,7 +6,7 @@ import img from "../../../assets/download.png";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  console.log(user);
+  // console.log(user);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -17,17 +17,17 @@ const Navbar = () => {
           <Link to="/">
             <div className="flex items-center">
               <div className="w-[55px] h-[55px] ml-4">
-               <Link to='/'>
-                <img
-                  className="w-full h-full object-cover rounded-full"
-                  src={img}
-                  alt=""
-                />
-               </Link>
+                <Link to="/">
+                  <img
+                    className="w-full h-full object-cover rounded-full"
+                    src={img}
+                    alt=""
+                  />
+                </Link>
               </div>
-                <h1 className="text-xl text-green-400 font-bold">
-                  Public Issue{" "}
-                </h1>
+              <h1 className="text-xl text-green-400 font-bold">
+                Public Issue{" "}
+              </h1>
             </div>
           </Link>
 
@@ -44,6 +44,9 @@ const Navbar = () => {
             </Link>
             <Link to="/about-Us">
               <li className="hover:text-red-500">About Us</li>
+            </Link>
+            <Link to="/staff">
+              <li className="hover:text-red-500">Staff</li>
             </Link>
           </ul>
 
@@ -97,6 +100,13 @@ const Navbar = () => {
                     className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
                   >
                     About Us
+                  </Link>
+
+                  <Link
+                    to="/staff"
+                    className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                  >
+                    Staff
                   </Link>
 
                   {/* If logged in */}

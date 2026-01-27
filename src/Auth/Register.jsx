@@ -19,13 +19,12 @@ const Register = () => {
   } = useForm();
 
   const handleRegistion = (data) => {
-    console.log(data.photo[0]);
+    // console.log(data.photo[0]);
     const profile = data.photo[0];
 
     registerUser(data.email, data.password)
-      .then((res) => {
+      .then(async (res) => {
         console.log(res);
-
         // store the image get the photo url
         const userProfile = {
           displayName: data.name,
@@ -37,11 +36,8 @@ const Register = () => {
         const api_Img_Url = `https://api.imgbb.com/1/upload?key= ${
           import.meta.env.VITE_image_host_key
         }`;
-        axiosSecure.post(api_Img_Url, formData).then((res) => {
-          console.log(res.data);
-          userProfile.photoURL = res.data.data.display_url;
-          console.log(res.data.data.display_url);
-        });
+        const photoResponse = await axiosSecure.post(api_Img_Url, formData);
+        userProfile.photoURL = photoResponse.data.data.display_url;
         updateUserProfile(userProfile)
           .then(() => {
             const photoURL = userProfile.photoURL;
@@ -53,7 +49,7 @@ const Register = () => {
               createdAt: new Date().toISOString(),
             };
             // console.log('profile updated');
-            axiosSecure.post("/users", userInfo).then((res) => {
+            axiosSecure.post("/citizen", userInfo).then((res) => {
               if (res.data.insertedId) {
                 console.log("user info stored");
               }

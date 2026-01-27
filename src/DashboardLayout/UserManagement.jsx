@@ -2,23 +2,24 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import UseAxiosSecure from "../Componets/Hook/UseAxiosSecure";
 import Swal from "sweetalert2";
-import { FiShieldOff } from "react-icons/fi";
 import { FaUserShield } from "react-icons/fa";
+import { FiShieldOff } from "react-icons/fi";
 
 const UserManagement = () => {
-  const userAxcios = UseAxiosSecure();
+  const axiosSecure = UseAxiosSecure();
 
   const [searchText, setSearchText] = useState("");
   const { refetch, data: users = [] } = useQuery({
     queryKey: ["users", searchText],
     queryFn: async () => {
-      const res = await userAxcios.get(`/users?search=${searchText}`);
+      const res = await axiosSecure.get(`/citizen?search=${searchText}`);
       return res.data;
     },
   });
   const handleMakeAdmin = (user) => {
     const roleInfo = { role: "admin" };
-    userAxcios.patch(`/users/${user._id}/role`, roleInfo).then((res) => {
+    axiosSecure.patch(`/citizen/${user._id}/role`, roleInfo)
+    .then((res) => {
       if (res.data.modifiedCount) {
         refetch();
         Swal.fire({
@@ -32,9 +33,8 @@ const UserManagement = () => {
     });
   };
   const heandleRemoveAdmin = (user) => {
-    const roleInfo = { role: "user" };
-
-    userAxcios.patch(`/users/${user._id}/role`, roleInfo).then((res) => {
+    axiosSecure.patch(`/citizen/${user._id}/role`, { role: "citizen" })
+    .then((res) => {
       if (res.data.modifiedCount) {
         refetch();
         Swal.fire({
@@ -49,7 +49,7 @@ const UserManagement = () => {
   };
   return (
     <div>
-      <h1 className="font-black text-2xl"> User Management Page</h1>
+      <h1 className="text-4xl "> Manage User: {users.length}</h1>
       <h1>The Search Text : {searchText}</h1>
       <label className="input">
         <svg
@@ -83,7 +83,7 @@ const UserManagement = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
-              <th>Admon Actions</th>
+              <th>Admin Actions</th>
               <th>Others</th>
             </tr>
           </thead>
@@ -113,19 +113,19 @@ const UserManagement = () => {
                     <button
                       onClick={() => heandleRemoveAdmin(users)}
                       className="btn bg-red-400 "
-                    >
+                    > 
                       <FiShieldOff></FiShieldOff>
                     </button>
                   ) : (
                     <button
+                    onClick={() => handleMakeAdmin(users)}
                       className="btn bg-green-400"
-                      onClick={() => handleMakeAdmin(users)}
                     >
                       <FaUserShield></FaUserShield>
                     </button>
                   )}
                 </td>
-                <th>Actions</th>
+                <td>Actions</td>
               </tr>
             ))}
           </tbody>
