@@ -1,7 +1,7 @@
 
 
 // const axiosSecure = axios.create({
-//   baseURL: "http://localhost:3000",
+//   baseURL: "https://public-infrastructure-reporting.vercel.app",
 // });
 
 // const useAxiosSecure = () => {
@@ -55,7 +55,7 @@ import useAuth from "./useAuth";
 import { useNavigate } from "react-router";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://public-infrastructure-reporting.vercel.app",
 });
 
 const useAxiosSecure = () => {

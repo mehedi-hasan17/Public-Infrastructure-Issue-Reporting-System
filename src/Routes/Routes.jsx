@@ -19,6 +19,8 @@ import Staff from "../Componets/pages/Staff";
 import ApprovedStaff from "../DashboardLayout/ApprovedStaff";
 import Allissues from "../DashboardLayout/Allissues";
 import ManageUsers from "../DashboardLayout/ManageUsers";
+import AdminRole from "../Componets/Hook/AdminRole";
+import AssignedIssues from "../DashboardLayout/AssignedIssues";
 
 export const router = createBrowserRouter([
   {
@@ -29,7 +31,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
-        loader: () => fetch("http://localhost:3000/latest-issus"),
+        loader: () =>
+          fetch(
+            "https://public-infrastructure-reporting.vercel.app/latest-issus",
+          ),
       },
       {
         path: "/login",
@@ -51,7 +56,10 @@ export const router = createBrowserRouter([
             <DetelsPage></DetelsPage>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:3000/latest-issus"),
+        loader: () =>
+          fetch(
+            "https://public-infrastructure-reporting.vercel.app/latest-issus",
+          ),
       },
       {
         path: "/contact",
@@ -89,28 +97,48 @@ export const router = createBrowserRouter([
       },
       {
         path: "citizen-management",
-        Component: UserManagement,
+        // Component: UserManagement,
+        element: (
+          <AdminRole>
+            <UserManagement></UserManagement>
+          </AdminRole>
+        ),
       },
       {
         path: "all-issues",
-        Component: Allissues,
+        // Component: Allissues,
+        element: (
+          <AdminRole>
+            <Allissues></Allissues>
+          </AdminRole>
+        ),
       },
       {
         path: "manage-users",
-        Component: ManageUsers,
+        // Component: ManageUsers,
+        element: (
+          <AdminRole>
+            <ManageUsers></ManageUsers>
+          </AdminRole>
+        ),
       },
       {
         path: "report-issue",
         Component: ReportIssue,
       },
       {
+        path: "assigned-issues",
+        Component: AssignedIssues,
+      },
+
+      {
         path: "profile",
         Component: Profile,
       },
       {
         path: "staff-management",
-        Component: ApprovedStaff
-      }
+        Component: ApprovedStaff,
+      },
     ],
   },
 ]);

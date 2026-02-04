@@ -17,7 +17,7 @@ const Profile = () => {
 
   // ✅ Update profile mutation
   const updateProfileMutation = useMutation({
-    mutationFn: (data) => axios.put(`http://localhost:3000/users/${user.email}`, data),
+    mutationFn: (data) => axios.put(`https://public-infrastructure-reporting.vercel.app/users/${user.email}`, data),
     onSuccess: () => {
       Swal.fire("Success", "Profile updated!", "success");
       queryClient.invalidateQueries(["user", user.email]);
@@ -28,7 +28,7 @@ const Profile = () => {
 
   // ✅ Make premium mutation
   const makePremiumMutation = useMutation({
-    mutationFn: () => axios.put(`http://localhost:3000/users/premium/${user.email}`),
+    mutationFn: () => axios.put(`https://public-infrastructure-reporting.vercel.app/users/premium/${user.email}`),
     onSuccess: () => {
       Swal.fire("Success", "You are now a premium user!", "success");
       queryClient.invalidateQueries(["user", user.email]);

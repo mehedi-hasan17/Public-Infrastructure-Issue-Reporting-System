@@ -13,7 +13,7 @@ const MyIssues = () => {
     queryKey: ["issues", user?.email],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:3000/issuess/${user.email}`
+        `https://public-infrastructure-reporting.vercel.app/issuess/${user.email}`
       );
       return res.data;
     },
@@ -23,7 +23,7 @@ const MyIssues = () => {
   // 🔹 Delete issue
   const deleteMutation = useMutation({
     mutationFn: async (id) => {
-      return axios.delete(`http://localhost:3000/issues/${id}`);
+      return axios.delete(`https://public-infrastructure-reporting.vercel.app/issues/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["issues"]);

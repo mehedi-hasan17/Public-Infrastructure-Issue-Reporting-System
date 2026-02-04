@@ -8,7 +8,7 @@ const DetelsPage = () => {
 
   useEffect(() => {
     // Fetch single issue
-    fetch(`http://localhost:3000/issues/${id}`) // change URL to your API
+    fetch(`https://public-infrastructure-reporting.vercel.app/issues/${id}`) // change URL to your API
       .then((res) => res.json())
       .then((data) => {
         const foundIssue = data.find((item) => item._id === id);

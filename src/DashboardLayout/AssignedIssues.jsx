@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Componets/Hook/UseAxiosSecure";
-import ChangeStatus from "./ChangeStatus";
+
 
 const AssignedIssues = () => {
   const axiosSecure = useAxiosSecure();
@@ -24,7 +24,7 @@ const AssignedIssues = () => {
         </tr>
       </thead>
       <tbody>
-        {issues.map((issue) => (
+        {issues.map(issue => (
           <tr key={issue._id}>
             <td>{issue.title}</td>
             <td>{issue.priority}</td>
@@ -35,7 +35,7 @@ const AssignedIssues = () => {
           </tr>
         ))}
       </tbody>
-    </table>
+    </table> 
   );
 };
 

@@ -1,11 +1,9 @@
 import { NavLink, Outlet } from "react-router";
 import UserRole from "../Componets/Hook/UserRole";
+import { FaHome } from "react-icons/fa";
 
 const DashboardLayout = () => {
   const { role, isBlocked } = UserRole();
-
-  console.log("User Role in DashboardLayout:", role);
-
   const linkClass = ({ isActive }) =>
     `px-4 py-3 rounded-lg text-sm font-semibold 
     ${isActive ? "bg-blue-600 text-white" : "hover:bg-gray-200"}`;
@@ -14,17 +12,14 @@ const DashboardLayout = () => {
     <div className="relative min-h-screen md:flex bg-white">
       {/* ===== LEFT SIDEBAR ===== */}
       <div className="w-64 bg-gray-100 border-r hidden md:block fixed h-full">
-        <NavLink to="/">
-          <h2 className="text-xl font-bold p-5 border-b">Dashboard Menu</h2>
-        </NavLink>
+        
+          <h2 className="text-xl font-bold p-5 border-b flex gap-1 items-center"><NavLink to='/'><span><FaHome /></span></NavLink> <span>Dashboard Menu</span></h2>
+       
 
         <nav className="flex flex-col p-3 space-y-2">
           {/* COMMON */}
           <NavLink to="/dashboard" end className={linkClass}>
             Dashboard
-          </NavLink>
-          <NavLink to="/dashboard/staff-management" className={linkClass}>
-            Staff Management
           </NavLink>
 
           {/* ===== CITIZEN MENU ===== */}
@@ -48,25 +43,26 @@ const DashboardLayout = () => {
               Assigned Issues
             </NavLink>
           )}
-          {
-            role === "admin" && (
-              <NavLink to="all-issues" className={linkClass}>
-                All Issues
-              </NavLink>
-              )
-          }
-          {
-            role === "admin" && (
-              <NavLink to="manage-users" className={linkClass}>
-                Manage Users
-              </NavLink>
-              )
-          }
+          {role === "admin" && (
+            <NavLink to="all-issues" className={linkClass}>
+              All Issues
+            </NavLink>
+          )}
+          {role === "admin" && (
+            <NavLink to="manage-users" className={linkClass}>
+              Manage Users
+            </NavLink>
+          )}
 
           {/* ===== ADMIN MENU ===== */}
           {role === "admin" && (
             <NavLink to="citizen-management" className={linkClass}>
               citizen Management
+            </NavLink>
+          )}
+          {role === "admin" && (
+            <NavLink to="/dashboard/staff-management" className={linkClass}>
+              Staff Management
             </NavLink>
           )}
 

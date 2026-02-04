@@ -11,9 +11,7 @@ const Staff = () => {
   const handleStaffApplication = (data) => {
     axiosSecure.post("/staff", data)
     .then((res) => {
-     console.log("Server response", res.data);
       if (res.data.insertedId) {
-
         Swal.fire({
           position: "center",
           icon: "success",
@@ -91,7 +89,7 @@ const Staff = () => {
             />
             <button
               type="submit"
-              className="btn btn-primary  text-black mt-5 p-4"
+              className="btn btn-primary  mt-5 p-4"
             >
               Apply as a Staff
             </button>

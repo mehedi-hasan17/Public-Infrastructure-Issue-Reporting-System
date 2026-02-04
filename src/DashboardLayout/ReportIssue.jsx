@@ -14,7 +14,7 @@ const ReportIssue = () => {
     queryKey: ["my-issues", user?.email],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:3000/my-issues/${user.email}`
+        `https://public-infrastructure-reporting.vercel.app/my-issues/${user.email}`
       );
       return res.data;
     },
@@ -51,7 +51,7 @@ const ReportIssue = () => {
       createdAt: new Date(),
     };
 
-    const res = await axios.post("http://localhost:3000/issues", issueData);
+    const res = await axios.post("https://public-infrastructure-reporting.vercel.app/issues", issueData);
 
     if (res.data.insertedId) {
       Swal.fire({
