@@ -5,8 +5,6 @@ import NotFound from "../Pages/NotFound/NotFound";
 import Login from "../Auth/Login";
 import Register from "../Auth/Register";
 import AllIssues from "../Pages/allIssues";
-import Contact from "../Pages/Contact";
-import AboutUs from "../Pages/AboutUs";
 import PrivateRoute from "./PrivateRoute";
 import DetelsPage from "../Pages/DetelsPage";
 import DashboardLayout from "../DashboardLayout/DashboardLayout";
@@ -60,14 +58,6 @@ export const router = createBrowserRouter([
           fetch(
             "https://public-infrastructure-reporting.vercel.app/latest-issus",
           ),
-      },
-      {
-        path: "/contact",
-        Component: Contact,
-      },
-      {
-        path: "/about-Us",
-        Component: AboutUs,
       },
       {
         path: "/staff",

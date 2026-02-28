@@ -39,12 +39,8 @@ const Navbar = () => {
             <Link to="/all-Issues">
               <li className="hover:text-red-500">All Issues</li>
             </Link>
-            <Link to="/contact">
-              <li className="hover:text-red-500">Contact</li>
-            </Link>
-            <Link to="/about-Us">
-              <li className="hover:text-red-500">About Us</li>
-            </Link>
+            
+            
             <Link to="/staff">
               <li className="hover:text-red-500">Staff</li>
             </Link>
@@ -87,21 +83,6 @@ const Navbar = () => {
                   >
                     All Issues
                   </Link>
-
-                  <Link
-                    to="/contact"
-                    className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
-                  >
-                    Contact
-                  </Link>
-
-                  <Link
-                    to="/about-Us"
-                    className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
-                  >
-                    About Us
-                  </Link>
-
                   <Link
                     to="/staff"
                     className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"

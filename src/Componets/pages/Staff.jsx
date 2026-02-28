@@ -25,13 +25,13 @@ const Staff = () => {
   };
 
   return (
-    <div>
+    <div className="container mx-auto px-4 py-8">
       <h2 className="text-3xl font-bold text-center my-10">
         Staff Page Coming Soon...
       </h2>
       <form onSubmit={handleSubmit(handleStaffApplication)}>
         {/* Sender + Receiver */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12  mx-auto">
+        <div >
           {/* Staff */}
           <fieldset className="fieldset">
             <h1 className="text-2xl font-bold">Staff Details</h1>
